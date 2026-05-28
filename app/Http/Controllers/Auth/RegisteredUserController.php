@@ -30,15 +30,19 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // REVISI: Menambahkan 'class' ke dalam aturan validasi form
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'class' => ['required', 'string', 'in:ICA24,ICB24,ICC24,ICD24,ICE24'], // Memastikan pilihan kelas sesuai dropdown
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // REVISI: Menambahkan 'class' agar ikut disimpan saat user baru dibuat
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'class' => $request->class,
             'password' => Hash::make($request->password),
         ]);
 

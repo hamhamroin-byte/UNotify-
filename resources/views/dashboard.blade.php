@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="py-10 bg-gray-100 min-h-screen">
         <div class="max-w-5xl mx-auto px-4">
-            
+
             <div class="bg-gradient-to-r transition-all from-blue-600 to-indigo-700 rounded-2xl shadow-lg p-6 mb-8 text-white">
                 <h1 class="text-3xl font-bold">
                     Selamat Datang, {{ Auth::user()->name }}! 👋
